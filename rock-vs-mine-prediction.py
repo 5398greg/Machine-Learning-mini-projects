@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
 
 sonar_data = pd.read_csv('./data/sonar_data.csv', header=None)
@@ -33,10 +34,19 @@ print(new_sonar_data.Labels.value_counts())
 
 print(new_sonar_data)
 
-# Splitting the data into features and labels X --> features Y --> labels
 
+# Splitting the data into features and labels X --> features Y --> labels
 X = new_sonar_data.iloc[:, :60]
 Y = new_sonar_data['Labels']
 
 print(X)
 print(Y)
+
+
+# Splitting the Data into Train and Test
+X_train, X_test, Y_train, Y_test = train_test_split(
+    X, Y, test_size=0.1, stratify=Y, random_state=21)
+
+print(X.shape)
+print(X_train.shape)
+print(X_test.shape)
