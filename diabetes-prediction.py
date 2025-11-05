@@ -1,6 +1,7 @@
 # importng dependecies
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 
 # getting the diabetes data
@@ -40,3 +41,11 @@ X = scaler.fit_transform(X)
 
 print(X.std())
 print(Y)
+
+# Splitting the data to Train and test for our model training
+X_train, X_test, Y_train, Y_test = train_test_split(
+    X, Y, test_size=0.1, stratify=Y, random_state=9)
+
+print(X.shape)
+print(X_train.shape)
+print(X_test.shape)
