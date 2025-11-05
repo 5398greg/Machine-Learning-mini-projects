@@ -75,3 +75,5 @@ print('You ARE diabetic') if model.predict(acceptable_input_data)[0] == 1 else p
     'You are NOT diabetic')
 
 print(model.predict(acceptable_input_data))
+
+# finished project
