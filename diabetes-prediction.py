@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
 
 # getting the diabetes data
@@ -54,3 +55,10 @@ print(X_test.shape)
 # Using a logistic reggression model to Train our data
 model = LogisticRegression()
 model.fit(X_train, Y_train)
+
+# Checking the accuracy score on training and testing data
+training_score = accuracy_score(model.predict(X_train), Y_train)
+print(f'Your Training score is: {training_score: .2f}%')
+
+testing_score = accuracy_score(model.predict(X_test), Y_test)
+print(f'Your Testing score is: {testing_score: .2f}%')
