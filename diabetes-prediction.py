@@ -1,5 +1,6 @@
 # importng dependecies
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -57,8 +58,20 @@ model = LogisticRegression()
 model.fit(X_train, Y_train)
 
 # Checking the accuracy score on training and testing data
-training_score = accuracy_score(model.predict(X_train), Y_train)
+training_score = accuracy_score(model.predict(X_train), Y_train) * 100
 print(f'Your Training score is: {training_score: .2f}%')
 
-testing_score = accuracy_score(model.predict(X_test), Y_test)
+testing_score = accuracy_score(model.predict(X_test), Y_test) * 100
 print(f'Your Testing score is: {testing_score: .2f}%')
+
+
+# Building a system for users input
+
+input_data = (13, 145, 82, 19, 110, 22.2, 0.245, 57)
+
+acceptable_input_data = scaler.transform(np.asarray(input_data).reshape(1, -1))
+
+print('You ARE diabetic') if model.predict(acceptable_input_data)[0] == 1 else print(
+    'You are NOT diabetic')
+
+print(model.predict(acceptable_input_data))
