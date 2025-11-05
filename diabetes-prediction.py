@@ -2,6 +2,7 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 
 # getting the diabetes data
@@ -49,3 +50,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(
 print(X.shape)
 print(X_train.shape)
 print(X_test.shape)
+
+# Using a logistic reggression model to Train our data
+model = LogisticRegression()
+model.fit(X_train, Y_train)
