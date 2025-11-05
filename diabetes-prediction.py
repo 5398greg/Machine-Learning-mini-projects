@@ -1,5 +1,6 @@
 # importng dependecies
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
 
 # getting the diabetes data
@@ -26,4 +27,16 @@ new_diabetes_data = pd.concat([new_none_diabetic, diabetic], axis=0)
 print(new_none_diabetic)
 print(new_none_diabetic.shape)
 
-print(new_diabetes_data.std())
+# Splitting the data features and Outcome where X --> Features and Y --> Outcome
+X = new_diabetes_data.drop('Outcome', axis=1)
+Y = new_diabetes_data['Outcome']
+
+print(X)
+print(Y)
+
+# Standardising the Features data
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+print(X.std())
+print(Y)
