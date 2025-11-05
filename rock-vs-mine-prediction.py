@@ -27,7 +27,7 @@ new_sonar_data = pd.concat([mine_sample, rock], axis=0)
 print(new_sonar_data[60].value_counts())
 
 
-# Label Encoding
+# # Label Encoding
 label_encoder = LabelEncoder()
 labels = label_encoder.fit_transform(new_sonar_data[60])
 
@@ -38,7 +38,7 @@ print(new_sonar_data.Labels.value_counts())
 print(new_sonar_data)
 
 
-# Splitting the data into features and labels X --> features Y --> labels
+# # Splitting the data into features and labels X --> features Y --> labels
 X = new_sonar_data.iloc[:, :60]
 Y = new_sonar_data['Labels']
 
@@ -46,7 +46,7 @@ print(X)
 print(Y)
 
 
-# Splitting the Data into Train and Test
+# # Splitting the Data into Train and Test
 X_train, X_test, Y_train, Y_test = train_test_split(
     X, Y, test_size=0.1, stratify=Y, random_state=21)
 
@@ -55,12 +55,12 @@ print(X_train.shape)
 print(X_test.shape)
 
 
-# Train the model (Support vector machine)
+# # Train the model (Support vector machine)
 model = svm.SVC(kernel='linear')
 model.fit(X_train, Y_train)
 
 
-# Evaluating the accuracy score of the model
+# # Evaluating the accuracy score of the model
 training_score = accuracy_score(model.predict(X_train), Y_train) * 100
 print(f'Training score : {training_score: .2f}%')
 
@@ -68,9 +68,9 @@ testing_score = accuracy_score(model.predict(X_test), Y_test) * 100
 print(f'Testing score : {testing_score: .2f}%')
 
 
-# Creating a Predictive system based on input from user
+# # Creating a Predictive system based on input from user
 
-data = (0.0134, 0.0172, 0.0178, 0.0363, 0.0444, 0.0744, 0.0800, 0.0456, 0.0368, 0.1250, 0.2405, 0.2325, 0.2523, 0.1472, 0.0669, 0.1100, 0.2353, 0.3282, 0.4416, 0.5167, 0.6508, 0.7793, 0.7978, 0.7786, 0.8587, 0.9321, 0.9454, 0.8645, 0.7220, 0.4850, 0.1357, 0.2951, 0.4715, 0.6036, 0.8083, 0.9870, 0.8800, 0.6411, 0.4276, 0.2702, 0.2642, 0.3342, 0.4335, 0.4542, 0.3960, 0.2525, 0.1084, 0.0372, 0.0286, 0.0099, 0.0046, 0.0094, 0.0048, 0.0047, 0.0016, 0.0008, 0.0042, 0.0024, 0.0027, 0.0041
+data = (0.0286, 0.0453, 0.0277, 0.0174, 0.0384, 0.0990, 0.1201, 0.1833, 0.2105, 0.3039, 0.2988, 0.4250, 0.6343, 0.8198, 1.0000, 0.9988, 0.9508, 0.9025, 0.7234, 0.5122, 0.2074, 0.3985, 0.5890, 0.2872, 0.2043, 0.5782, 0.5389, 0.3750, 0.3411, 0.5067, 0.5580, 0.4778, 0.3299, 0.2198, 0.1407, 0.2856, 0.3807, 0.4158, 0.4054, 0.3296, 0.2707, 0.2650, 0.0723, 0.1238, 0.1192, 0.1089, 0.0623, 0.0494, 0.0264, 0.0081, 0.0104, 0.0045, 0.0014, 0.0038, 0.0013, 0.0089, 0.0057, 0.0027, 0.0051, 0.0062
         )
 
 new_data = np.asarray(data).reshape(1, -1)
